@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const navLink = document.querySelectorAll(".nav-items a"),
   locations = location.pathname,
   pokemonItems = document.querySelector('.pokemon-items'),
