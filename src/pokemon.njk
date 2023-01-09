@@ -5,18 +5,22 @@ pagination:
   data: poke
   size: 10
   alias: poke
+permalink: pokemon/{{ pagination.pageNumber+1 }}/index.html
 ---
 <section class="pokemon-section">
   <div class="wrapper">
     <ul class="pokemon-items">
       {% for item in poke %}
-        <li class="poke-list"><a href="/pokemonDetail/" class="poke-name">{{item.name}}</a></li>
+        <li class="poke-list">
+          <a href="/pokemonDetail/{{item.name}}/" class="poke-name">{{item.name}}</a>
+        </li>
+        
       {% endfor %}
     </ul>
     <ol class="pagination-items">
       <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
       {% for page in pagination.pages %}
-        <li class="page-list"><a href="{{ pagination.hrefs[ loop.index0+1 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+        <li class="page-list"><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
       {% endfor %}
       <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
     </ol>
