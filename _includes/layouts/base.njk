@@ -9,11 +9,11 @@
   <title>{{title}}</title>
 </head>
 <body>
-  {% include "header.njk" %}
+  {% include "layouts/header.njk" %}
   <main>
     {{ content | safe }}
   </main>
-  {% include "footer.njk" %}
+  {% include "layouts/footer.njk" %}
 
   <script src="/script/script.js"></script>
 </body>

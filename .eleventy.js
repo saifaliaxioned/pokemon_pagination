@@ -2,10 +2,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('css');
   eleventyConfig.addPassthroughCopy('script');
   return {
+    markdownTemplateEngine: "njk",
     dir: {
-      input: "src",
-      output: "dist",
-      data: "_data"
+      data: "_data",
+      output: "dist"
     }
   };
 }
