@@ -2,17 +2,20 @@
 title: Pokemonpage
 layout: layouts/base.njk
 pagination:
-  data: poke
+  data: detail
   size: 10
-  alias: poke
+  alias: detail
 permalink: pokemon/{{ pagination.pageNumber+1 }}/index.html
 ---
 <section class="pokemon-section">
   <div class="wrapper">
     <ul class="pokemon-items">
-      {% for item in poke %}
+      {% for item in detail %}
         <li class="poke-list">
-          <a href="/pokemonDetail/{{item.name}}/" class="poke-name">{{item.name}}</a>
+          <figure>
+            <img src="{{item.data.sprites.other.dream_world.front_default}}" alt="{{item.data.name}}">
+          </figure>
+          <a href="/pokemonDetail/{{item.data.name}}/" class="poke-name">{{item.data.name}}</a>
         </li>
         
       {% endfor %}
