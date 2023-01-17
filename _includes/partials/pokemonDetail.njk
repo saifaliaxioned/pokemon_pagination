@@ -7,31 +7,32 @@ pagination:
   alias: detail
 permalink: pokemonDetail/{{ detail.data.name }}/index.html
 ---
-<section class="pokemon-section">
+<section class="pokemon-section ">
   <div class="wrapper">
-    <figure class="detail-img">
-      <img src="{{detail.data.sprites.other.dream_world.front_default}}" alt="{{detail.data.name}}">
-    </figure>
-      <h1>" {{detail.data.types[0].type.name}} "{% if detail.data.types[1].type.name %}{{detail.data.types[1].type.name}} "{% endif %}</h1>
-    <h2>{{detail.data.name}}</h2>
-    <ul class="pokemon-items">
-      {% for item in detail.data.stats %}
-        <li>
-          <h3>{{item.stat.name}}</h3>
-          <h3>{{item.base_stat}}</h3>
+    <div class="pokemon-card {{detail.data.types[0].type.name}}">
+      <figure class="detail-img">
+        <img src="{{detail.data.sprites.other.dream_world.front_default}}" alt="{{detail.data.name}}">
+      </figure>
+      <h1><span class="title-{{detail.data.types[0].type.name}}">" {{detail.data.types[0].type.name}} " {% if detail.data.types[1].type.name %}{{detail.data.types[1].type.name}} "{% endif %}</span></h1>
+     <h2 class="poke-detail-name">{{detail.data.name}}</h2>
+      <ul class="pokemon-detail-items">
+        {% for item in detail.data.stats %}
+          <li>
+            <h3>{{item.stat.name}}</h3>
+            <h3>{{item.base_stat}}</h3>
+          </li>
+        {% endfor %}
+      </ul>
+      <ul class="abilities">
+        <li class="ability-list">
+          <span>ability</span>
+          <h4>{{detail.data.abilities[0].ability.name}}</h4>
         </li>
-      {% endfor %}
-    </ul>
-
-    <ul class="abilities">
-      <li class="ability-list">
-        <span>ability</span>
-        <h4>{{detail.data.abilities[0].ability.name}}</h4>
-      </li>
-      <li class="ability-list">
-        <span>hidden ability</span>
-        <h4>{{detail.data.abilities[1].ability.name}}</h4>
-      </li>
-    </ul>
+        <li class="ability-list">
+          <span>hidden ability</span>
+          <h4>{{detail.data.abilities[1].ability.name}}</h4>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
